@@ -1,7 +1,5 @@
-#pragma once
 #ifndef SHAPE_H
 #define SHAPE_H
-
 #include "point.h"
 #include <string>
 
@@ -19,3 +17,4 @@ public:
 };
 
 #endif // SHAPE_H
+

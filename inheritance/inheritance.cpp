@@ -8,12 +8,21 @@
 int main() {
     std::vector<Shape*> shapes;
 
-    // Создание фигур
-    shapes.push_back(new Rectangle(Point(0, 0), Point(4, 3)));
-    shapes.push_back(new Triangle(Point(0, 0), Point(4, 0), Point(2, 3))); 
-    shapes.push_back(new Rectangle(Point(0, 0), Point(2, 2))); 
-    shapes.push_back(new Triangle(Point(0, 0), Point(2, 0), Point(1, 1.732))); 
-	shapes.push_back(new Rectangle(Point(1, 1), Point(1, 1)));
+    try {
+        shapes.push_back(new Rectangle(Point(1, 1), Point(5.5, 6.6)));
+        shapes.push_back(new Triangle(Point(1, 1), Point(1, 2), Point(2, 0)));
+        shapes.push_back(new Rectangle(Point(0.5, 0.7), Point(4.5, 6.2)));
+        shapes.push_back(new Triangle(Point(0, 0), Point(2, 0), Point(1, 1.732)));
+        shapes.push_back(new Rectangle(Point(0, 0), Point(5, 5)));
+    }
+    catch (const std::invalid_argument& e) {
+        std::cerr << "Error when creating a figure:" << e.what() << std::endl;
+        for (auto& shape : shapes) {
+            delete shape;
+        }
+        return 1; 
+    }
+
 
     // Сортировка фигур
     std::sort(shapes.begin(), shapes.end(), [](const Shape* a, const Shape* b) {
@@ -27,7 +36,7 @@ int main() {
     }
 
     // Масштабирование всех фигур
-    double scaleFactor = 6.0; 
+    double scaleFactor = 3.0; 
     for (auto& shape : shapes) {
         shape->scale(scaleFactor);
     }

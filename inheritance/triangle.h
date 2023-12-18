@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
@@ -6,7 +5,6 @@
 
 class Triangle : public Shape {
     Point a, b, c;
-
 public:
     Triangle(const Point& a, const Point& b, const Point& c);
     double getArea() const override;
@@ -16,3 +14,4 @@ public:
 };
 
 #endif // TRIANGLE_H
+
